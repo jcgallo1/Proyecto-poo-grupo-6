@@ -59,12 +59,8 @@ public class Lectura {
 
     public static void main(String[] args) {
         //crear el objeto para cargar los estudiantes a la lista
-        Lectura lec = new Lectura();
-        lec.cargarEstudiantes();
-        System.out.println(lec
-                .listaEstudiantes);
-        
-        
+        Lectura ej = new Lectura();
+        ej.cargarEstudiantes();
+        System.out.println(ej.listaEstudiantes);
     }
-
 }
