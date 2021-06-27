@@ -84,3 +84,81 @@ public class Actividad{
     llenarLista(verificador,buscada);
 
   }
+  // Metodo para registrar participantes
+  public void registrarParticipante(){buscarCarrera();}
+    
+    
+    
+    public int registrarGanadores(){
+      System.out.print("\nIngrese ID de la carrera a editar: ");
+      String idc=sc.next();
+      int verificador =0;
+      Carrera buscada= new Carrera();
+      for (int i = 0; i < carreras.size(); i++) {
+        if (idc.equals(carreras.get(i).id)) {
+          if (carreras.get(i).getParticipantes().size()<3){
+            System.out.println("\nLa carrera seleccionada no cuenta con participantes suficientes");
+            return -1;
+          }
+          System.out.println("\nRegistro de ganadores en carrera del "+carreras.get(i).fecha);
+          buscada=carreras.get(i);
+          verificador=1 ;
+          }
+        }
+      if (verificador ==0){
+        System.out.println("\n====>Carrera no encontrada");
+      }
+      else{
+        int n=0;
+        boolean ver;
+        boolean ver2;
+        while (n<3){
+          ver=true;
+          ver2=true;
+          System.out.println("\nIngreso del "+(n+1)+" lugar: ");
+          System.out.print("ID del estudiante: ");
+          String id=sc.next();
+          for (Estudiante f: buscada.getGanadores()){
+                if (id.equals(f.getId())){
+                  System.out.println("El estudiante ya se encuentra en la lista de Ganadores.");
+                  ver2 =false;
+                }
+            }
+          for (Estudiante e: buscada.getParticipantes()){
+            if (id.equals(e.getId()) && (ver2)){
+              ver=false;
+              System.out.print("Tiempo: ");
+              float t=sc.nextFloat();
+              Participante5k novato= new Participante5k(e.getId(),e.getNombre(),e.getGenero(),e.getCarrera(),t);
+              System.out.println("\nEstudiante "+e.getNombre()+" registrado");
+              buscada.getGanadores().add(novato) ;
+              n+=1;
+            }
+          }
+          if (ver && ver2){
+            System.out.print("El estudiante no existe en la lista de participantes");
+          }
+        }
+        buscada.setActiva(false);
+
+      }
+    return 1;  
+    }
+    public void cargarInformacionCarreras(){
+    
+      String d="27/6/2021";
+      String h="09:00";
+      ArrayList<Participante5k> p=new ArrayList<Participante5k>();
+      ArrayList<Participante5k> g=new ArrayList<Participante5k>();
+      Carrera c=new Carrera("1",d,h,p,g,true);
+      carreras.add(c);
+      
+
+      d="29/11/2021";
+      h="10:00";
+      ArrayList<Participante5k> p2=new ArrayList<Participante5k>();
+      ArrayList<Participante5k> g2=new ArrayList<Participante5k>();
+      Carrera c2=new Carrera("2",d,h,p2,g2,true);
+      carreras.add(c2);
+    }
+  }
