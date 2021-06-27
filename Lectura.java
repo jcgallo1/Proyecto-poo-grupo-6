@@ -63,11 +63,6 @@ public class Lectura {
         lec.cargarEstudiantes();
         System.out.println(lec
                 .listaEstudiantes);
-        for(int i=0;i<lec
-                .listaEstudiantes.size();i++){
-            System.out.println(lec
-                .listaEstudiantes.get(i).getnombre());
-        }
         
         
     }
