@@ -1,4 +1,4 @@
-package modelo;
+package modelo; 
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -19,10 +19,16 @@ import java.util.ArrayList;
  */
 public class Lectura {
 
-    private ArrayList<Estudiante> listaEstudiantes;
+    public ArrayList<Estudiante> listaEstudiantes;
 
     public Lectura() {//crea la lista
         listaEstudiantes = new ArrayList<>();
+    }
+    public String toString() {
+        return "Lista"+listaEstudiantes;
+    }
+    public ArrayList<Estudiante> getListaEstudiantes() {//Get de la lista
+        return listaEstudiantes;
     }
 
     public void cargarEstudiantes() {
@@ -54,9 +60,9 @@ public class Lectura {
                 System.out.println("Error al cerrar el archivo");
             }
         }
+        
    
     }
-
     public static void main(String[] args) {
         //crear el objeto para cargar los estudiantes a la lista
         Lectura ej = new Lectura();
@@ -64,3 +70,4 @@ public class Lectura {
         System.out.println(ej.listaEstudiantes);
     }
 }
+
